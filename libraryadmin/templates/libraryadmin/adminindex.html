@@ -1,0 +1,376 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>KAMALA INSTITUTE DIGITAL LIBRARY</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/indexstyle.css' %}" rel="stylesheet">
+    <style>
+      .courses {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 80px;
+        /* Add spacing between the grid items */
+        padding: 30px;
+      }
+    </style>
+  </head>
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo1">
+        <a href="{% url 'adminindex' %}" class="logo2">
+          <img src="{% static 'assets/img/cc1.png' %}" alt="" class="img-fluid">
+          <h1>KITS(S) DIGITAL LIBRARY</h1>
+        </a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'adminindex' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'adminindex' %}#services">Books</a></li>
+          <li class="dropdown"><a href="#"><span>course</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                  <li class="dropdown"><a href="#"><span>First Year</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                          <li><a href="{% url 'admin_first_year_1_1' %}">1-1</a></li>
+                          <li><a href="{% url 'admin_first_year_1_2' %}">1-2</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>Second Year</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                          <li><a href="{% url 'admin_second_year_2_1' %}">2-1</a></li>
+                          <li><a href="{% url 'admin_second_year_2_2' %}">2-2</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>Third Year</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                          <li><a href="{% url 'admin_third_year_3_1' %}">3-1</a></li>
+                          <li><a href="{% url 'admin_third_year_3_2' %}">3-2</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>Fourth Year</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                          <li><a href="{% url 'admin_fourth_year_4_1' %}">4-1</a></li>
+                          <li><a href="{% url 'admin_fourth_year_4_2' %}">4-2</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'admin_fetchusersticket' %}">Tickets</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'admin_uploadbooks' %}">Upload</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'register' %}">Registration</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'admin_profile' %}">Profile</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <h3>Welcome to <strong>KITS LIBRARY</strong></h3>
+      <h1>We're Creative Agency</h1>
+      <h2>"Nothing is pleasanter than exploring a library."</h2>
+      <a href="#services" class="btn-get-started scrollto">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title2">
+          <h2>Books</h2>
+          <h3 style="padding: 30px;">We provide awesome <span>Books</span></h3>
+          <p>"Writing and reading decrease our sense of isolation. They deepen and widen and expand our sense of life: They feed the soul. When writers make us shake our heads with the exactness of their prose and their truths, and even make us laugh about ourselves or life, our buoyancy is restored. We are given a shot at dancing with, or at least clapping along with, the absurdity of life, instead of being squashed by it over and over again. It's like singing on a boat during a terrible storm at sea. You can't stop the raging storm, but singing can change the hearts and spirits of the people who are together on that ship."</p>
+        </div>
+        <div class="row">
+          <!-- Replace the following links with Django URLs -->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="{% url 'admin_generalbooks' %}">
+              <div class="icon-box">
+                <div class="icon"><i class="fa fa-book"></i></div>
+                <h4 class="title" style="padding: 10px;"><a href="{% url 'admin_generalbooks' %}">General Books</a></h4>
+                <p class="description">Open the pages and embark on a journey beyond imagination.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="{% url 'admin_novels' %}">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h4 class="title"><a href="{% url 'admin_novels' %}">Novels</a></h4>
+                <p class="description">Unravel mysteries and truths as characters race against time in a gripping novel of intrigue</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="{% url 'admin_journals' %}">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-world"></i></div>
+                <h4 class="title"><a href="{% url 'admin_journals' %}">Journals</a></h4>
+                <p class="description">Capture your thoughts and chronicle your journey on the pages of this personal journal.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <a href="{% url 'admin_papers' %}">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h4 class="title"><a href="{% url 'admin_papers' %}">Papers</a></h4>
+                <p class="description">An informative white paper outlining innovative solutions for sustainable energy.</p>
+              </div>
+            </a>
+          </div>
+          <div class="section-title2">
+            <h3 style="padding: 30px;">We provide awesome <span>Course Books</span></h3>
+            <div class="courses">
+              <!-- Replace the following links with Django URLs -->
+              <div class="icon-box">
+                <a href="{% url 'admin_first_year_1_1'%}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_first_year_1_1'%}">1-1</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_first_year_1_2' %}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_first_year_1_2' %}">1-2</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_second_year_2_1'%}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_second_year_2_1'%}">2-1</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_second_year_2_2' %}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_second_year_2_2' %}">2-2</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_third_year_3_1'%}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_third_year_3_1'%}">3-1</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_third_year_3_2' %}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_third_year_3_2' %}">3-2</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_fourth_year_4_1'%}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_fourth_year_4_1'%}">4-1</a></h4>
+                </a>
+              </div>
+              <div class="icon-box">
+                <a href="{% url 'admin_fourth_year_4_2' %}">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a href="{% url 'admin_fourth_year_4_2' %}">4-2</a></h4>
+                </a>
+              </div>
+              <!-- Add similar links for other years and parts -->
+            </div>
+          </div>
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title1">
+          <h2>About</h2>
+          <h3>Learn More <span>About Us</span></h3>
+          <h4>Institute - Motto</h4>
+          <p style="text-align: start;">The policies of the Government of India to extend technical education to rural areas, Kamala Institute of Technology & Science (KITS,Singapur) was established in 1997 at Singapur (Village),Huzurabad (mdl),Karimnagar (Dist) in Telangana state. The institute, with the conviction on the motto "Vidvaan Sarvatra Pujyante", constantly strives for academic excellence.</p>
+        </div>
+        <div class="row content">
+          <div class="col-lg-6">
+            <p style="color: red;">VISION</p>
+            <p>The Institute aims to provide quality technical education to its students by expanding the horizons of knowledge, innovation and character-building in local and global perspective.</p>
+            <p style="color: red;">MISSION</p>
+            <p>To disseminate technical knowledge of highest order to meet the professional challenges.</p>
+            <p>To nurture the students for technical and global economic competitiveness.</p>
+            <p>To impart leadership qualities among students and make them responsible to the society.</p>
+            <p style="color: red;">QUALITY POLICY</p>
+            <p>It will be our constant endeavor to adopt latest methods of teaching-learning and to upgrade the knowledge base, skills and techniques of our staff and students by continuous interaction with academia, industry and the society at large.</p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Affiliated to:Jawaharlal Nehru Technological University, Kukatpally, Hyderabad</li>
+              <li><i class="ri-check-double-line"></i> Approved by:All India Council of Technical Education (A.I.C.T.E), New Delhi.</li>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              The institute offers under graduation programs in five disciplines of engineering viz, Electrical and Electronics Engineering, Electronics and Communications Engineering, Computer Science & Engineering, Mechanical Engineering, Civil Engineering and a post-graduation program(M.Tech) in Advanced Manufacturing Systems. Every year more than 500 students graduate out of the portals of the institute. Besides striving for academic excellence, Campus placement record at the institute is one of the best of its kind in the Telangana State. TCS, INFOSYS, SATYAM, WIPRO, IBM are some of the companies that visit the campus. Out of the handful colleges in Telangana State accredited for Campus Placements, by the Software Leviathan, Tata Consultancy Services (TCS) KITS(S) is one such institution. The institute has a facility of star-rated Telangana Academy for Skill and Knowledge (TASK), which helps in improving placement records and at the same time brings about overall personality development of the students to meet the requirements of the corporate sector. The institute provides a progressive direction under the leadership of eminent technologists, able administrators and academicians with great acumen from within and outside the institute. Kamala Institute of Technology & Science will be a torch bearer among the rural engineering colleges of India, whose students and faculty strive to expand the horizons of knowledge and innovation. It aims to provide world-class quality technical education to its students even from rural backgrounds and ensure their career-as well as character-building.
+            </p>
+            <a href="https://www.kitssingapuram.ac.in/new/index.php" class="btn-learn-more">More</a>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <h3>Contact <span>Us</span></h3>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <a href="https://goo.gl/maps/6AoSzs7TgAoUcKRq6"> <i class="bi bi-geo-alt"></i></a>
+                <h4>Location:</h4>
+                <p>Kamala Institute of Technology & Science
+                  Singapur, Huzurabad
+                  Karimnagar, Telanagana
+                  India - 505468</p>
+              </div>
+              <div class="email">
+                <a href="mailto:kitssingapuram@yahoo.co.in"><i class="bi bi-envelope"></i></a>
+                <h4>Email:</h4>
+                <p>kitssingapuram@yahoo.co.in</p>
+              </div>
+              <div class="phone">
+                <a href="tel:+91 9177670003"><i class="bi bi-phone"></i></a>
+                <h4>Call:</h4>
+                <p>+91 9177670003</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="{% url 'adminindex' %}" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              {% if messages %}
+              <div class="alert alert-success">
+                  <ul>
+                      {% for message in messages %}
+                          <li>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+              </div>
+                      {% endif %}
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>KITS LIBRARY</h3>
+            <p>
+              Kamala Institute of Technology & Science
+              Singapur, Huzurabad
+              Karimnagar, Telanagana
+              India - 505468</p>
+            <strong>Phone:</strong>tel:+91 9177670003<br>
+            <strong>Email:</strong>kitssingapuram@yahoo.co.in<br>
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our College</h4>
+            <a href="https://www.kitssingapuram.ac.in/new/index.php">@kitssingapuram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container d-md-flex py-4">
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>KITS</span></strong>. All Rights Reserved
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://www.twitter.com/kitssingapur" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/kitssingapur" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/kitssingapur" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.youtube.com/kitssingapur1997" class="google-plus"><i class="bx bxl-youtube"></i></a>
+        <a href="https://www.linkedin.com/company/kitss" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'script.js' %}"></script>
+  <script>
+    let logoutTimeout;
+  
+    function resetLogoutTimeout() {
+      clearTimeout(logoutTimeout);
+      logoutTimeout = setTimeout(function() {
+        // Redirect the user to the logout page after 30 minutes of inactivity
+        window.location.href = "{% url 'login' %}";
+      }, 1800000); // 1800000 milliseconds = 30 minutes
+    }
+  
+    document.addEventListener("mousemove", resetLogoutTimeout);
+    document.addEventListener("keypress", resetLogoutTimeout);
+  </script>
+</body>
+</html>

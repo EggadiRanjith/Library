@@ -1,0 +1,167 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAMALA INSTITUTE LIBRARY</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/remixicon/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/uploadstyle.css' %}">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo1">
+                <a href="{% url 'adminindex' %}" class="logo2">
+                    <img src="{% static 'assets/img/cc1.png' %}" alt="" class="img-fluid">
+                    <h1>KITS(S) DIGITAL LIBRARY</h1>
+                </a>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="{% url 'adminindex' %}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'adminindex' %}#services">Books</a></li>
+                    <li class="dropdown"><a href="#"><span>course</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li class="dropdown"><a href="#"><span>First Year</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="{% url 'admin_first_year_1_1' %}">1-1</a></li>
+                                    <li><a href="{% url 'admin_first_year_1_2' %}">1-2</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#"><span>Second Year</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="{% url 'admin_second_year_2_1' %}">2-1</a></li>
+                                    <li><a href="{% url 'admin_second_year_2_2' %}">2-2</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#"><span>Third Year</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="{% url 'admin_third_year_3_1' %}">3-1</a></li>
+                                    <li><a href="{% url 'admin_third_year_3_2' %}">3-2</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#"><span>Fourth Year</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="{% url 'admin_fourth_year_4_1' %}">4-1</a></li>
+                                    <li><a href="{% url 'admin_fourth_year_4_2' %}">4-2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="{% url 'admin_fetchusersticket' %}">Tickets</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'admin_uploadbooks' %}">Upload</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'adminindex' %}#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'admin_profile' %}">Profile</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header>
+    <main id="main" class="main" style="padding: 40px;">
+        <!-- Existing code before the profile view -->
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Profile</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% if user_email %}
+                    <div class="col-md-4">
+                        <label for="rollNumber">Roll Number:</label>
+                        <p id="rollNumber">{{ user_rollnumber }}</p>
+                        <label for="name">Name:</label>
+                        <p id="name">{{ user_name }}</p>
+                        <label for="email">Email:</label>
+                        <p id="email">{{ user_email }}</p>
+                    </div>
+                {% else %}
+                    <div class="col-md-12">
+                        <p>No user data found.</p>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Change Password</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% if user_email %}
+                    <div class="col-md-4">
+                        <form method="post" action="{% url 'change_password' %}" onsubmit="return validatePassword();">
+                            {% csrf_token %}
+                            <label for="old_password">Old Password:</label>
+                            <input type="password" id="old_password" name="old_password" required><br><br>
+                        
+                            <label for="new_password">New Password:</label>
+                            <input type="password" id="new_password" name="new_password" required><br><br>
+                        
+                            <label for="confirm_password">Confirm New Password:</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                            <input type="submit" value="Change Password">
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="col-md-12">
+                        <p>No user data found.</p>
+                    </div>
+                {% endif %}
+                
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <!-- Footer content goes here -->
+    </footer>
+
+    <!-- JavaScript files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+        let logoutTimeout;
+
+        function resetLogoutTimeout() {
+            clearTimeout(logoutTimeout);
+            logoutTimeout = setTimeout(function() {
+                // Redirect the user to the logout page after 30 minutes of inactivity
+                window.location.href = "{% url 'login' %}";
+            }, 1800000); // 1800000 milliseconds = 30 minutes
+        }
+
+        document.addEventListener("mousemove", resetLogoutTimeout);
+        document.addEventListener("keypress", resetLogoutTimeout);
+    </script>
+</body>
+</html>

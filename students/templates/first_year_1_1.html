@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>KAMALA INSTITUTE DIGITAL LIBRARY</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/books.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo1">
+        <a href="{% url 'studentindex' %}" class="logo2">
+          <img src="{% static 'assets/img/cc1.png' %}" alt="" class="img-fluid">
+          <h1>KITS(S) DIGITAL LIBRARY</h1>
+        </a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'studentindex' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'studentindex' %}#services">Books</a></li>
+          <li class="dropdown"><a href="#"><span>course</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>First Year</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'first_year_1_1'  %}">1-1</a></li>
+                  <li><a href="{% url 'first_year_1_2'  %}">1-2</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Second Year</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'second_year_2_1' %}">2-1</a></li>
+                  <li><a href="{% url 'second_year_2_2'  %}">2-2</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Third Year</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'third_year_3_1'  %}">3-1</a></li>
+                  <li><a href="{% url 'third_year_3_2'  %}">3-2</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Fourth Year</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'fourth_year_4_1'  %}">4-1</a></li>
+                  <li><a href="{% url 'fourth_year_4_2'  %}">4-2</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'fetchusersticket' %}">Tickets</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'studentindex' %}#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'profile' %}">Profile</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+  {% with selectedbranch=request.GET.branch %}
+  <main id="main" class="main">
+    <h1>First Year First Sem</h1>
+    <div class="container mt-5">
+      <form>
+        <div class="mb-3">
+          <label for="branchSelect" class="form-label">Select Engineering Branch:</label>
+          <select class="form-control" name="branch" id="branch" required>
+            <option value="" disabled selected>Select Engineering Branch</option>
+            <option value="computer" {% if selectedbranch == 'computer' %}selected{% endif %}>Computer Science</option>
+            <option value="mechanical" {% if selectedbranch == 'mechanical' %}selected{% endif %}>Mechanical Engineering</option>
+            <option value="electrical" {% if selectedbranch == 'electrical' %}selected{% endif %}>Electrical Engineering</option>
+            <option value="civil" {% if selectedbranch == 'civil' %}selected{% endif %}>Civil Engineering</option>
+            <!-- Add more engineering branch options -->
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary my-2">Filter</button>
+        <a href="?branch=" class="btn btn-primary my-2">Show All</a>
+      </form>
+    </div>
+
+    <div class="table-responsive">
+      <table id="books" class="custom-table">
+        <tr>
+          <th>Book Name</th>
+          <th>Book cover</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Publish Year</th>
+          <th>Branch</th>
+          <th>Download Link</th>
+        </tr>
+
+        {% for book in frst1 %}
+        <tr>
+          <td>{{ book.book_name }}</td>
+          <td><img src="{{ book.image_path }}" alt="Book Image" class="book-image"></td>
+          <td>{{ book.book_author }}</td>
+          <td>{{ book.genre }}</td>
+          <td>{{ book.publish_year }}</td>
+          <td>{{ book.branch }}</td>
+          <td><a href="{{ book.file_path}}" class="download-link" target="_blank">View</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="8">No books found.</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="page">
+        {{ books.paginator }}
+      </div>
+    </div>
+  </main>
+  {% endwith %}
+
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>KITS DIGITAL LIBRARY</h3>
+            <p>
+              Kamala Institute of Technology & Science
+              Singapur, Huzurabad
+              Karimnagar, Telangana
+              India - 505468</p>
+            <strong>Phone:</strong> <a href="tel:+919177670003">+91 9177670003</a><br>
+            <strong>Email:</strong> <a href="mailto:kitssingapuram@yahoo.co.in">kitssingapuram@yahoo.co.in</a><br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our College</h4>
+            <a href="https://www.kitssingapuram.ac.in/new/index.php">@kitssingapuram</a>
+          </div>
+          <div class="copyright">
+            &copy; Copyright <strong><span>KITS</span></strong>. All Rights Reserved
+            <div class="social">
+              <a href="https://www.twitter.com/kitssingapur" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/kitssingapur" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/kitssingapur" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/kitssingapur1997" class="google-plus"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.linkedin.com/company/kitss" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+          <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+          <!-- Vendor JS Files -->
+          <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+          <!-- Template Main JS File -->
+          <script src="{% static 'assets/js/main.js' %}"></script>
+          <script src="{% static 'script.js' %}"></script>
+          <script>
+            let logoutTimeout;
+
+            function resetLogoutTimeout() {
+              clearTimeout(logoutTimeout);
+              logoutTimeout = setTimeout(function() {
+                // Redirect the user to the logout page after 30 minutes of inactivity
+                window.location.href = "{% url 'login' %}";
+              }, 1800000); // 1800000 milliseconds = 30 minutes
+            }
+
+            document.addEventListener("mousemove", resetLogoutTimeout);
+            document.addEventListener("keypress", resetLogoutTimeout);
+          </script>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

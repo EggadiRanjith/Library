@@ -1,0 +1,263 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Kits Digital Library login</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/remixicon/remixicon.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Font Icon -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/fonts/material-icon/css/material-design-iconic-font.min.css' %}"
+    />
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'assets/css/loginstyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-content">
+          <a href="{% url 'login' %}" class="logo-link">
+            <img
+              src="{% static 'assets/img/cc1.png' %}"
+              alt="logo"
+              class="logo-image"
+            />
+            <h3 class="logo-text">KITS(S) LIBRARY MANAGEMENT SYSTEM</h3>
+          </a>
+        </div>
+      </div>
+      <!-- End Logo -->
+    </div>
+    <!-- End Header Container -->
+
+    <!-- Replace PHP session_start() with Django session management -->
+
+    <div class="main">
+      <!-- Sign-in Form -->
+      <section id="signin" class="sign-in">
+        <div class="container">
+          <div class="signin-content">
+            <div class="signin-image">
+              <figure>
+                <img
+                  src="{% static 'assets/img/signin-image.jpg' %}"
+                  alt="sign up image"
+                />
+              </figure>
+            </div>
+            <div class="signin-form">
+              <h2 class="form-title">Sign In</h2>
+              <form
+                method="POST"
+                class="login-form"
+                id="login-form"
+                action="{% url 'login' %}"
+              >
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="your_email"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="your_email"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="your_pass"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="checkbox"
+                    name="remember-me"
+                    id="remember-me"
+                    class="agree-term"
+                  />
+                  <label for="remember-me" class="label-agree-term"
+                    ><span><span></span></span>Remember me</label
+                  >
+                </div>
+                {% if error_message %}
+                <div class="alert alert-danger">{{ error_message }}</div>
+                {% endif %}
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="signin"
+                    id="signin"
+                    class="form-submit"
+                    value="Log in"
+                  />
+                  <a href="{% url 'forgotpassword' %}">Forgot Password?</a>
+                  <!-- Updated link for password reset -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>KITS LIBRARY</h3>
+              <p>
+                Kamala Institute of Technology & Science Singapur, Huzurabad
+                Karimnagar, Telangana India - 505468
+              </p>
+              <strong>Phone:</strong>tel:+91 9177670003<br />
+              <strong>Email:</strong>kitssingapuram@yahoo.co.in<br />
+            </div>
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Join Our College</h4>
+              <a href="https://www.kitssingapuram.ac.in/new/index.php"
+                >@kitssingapuram</a
+              >
+            </div>
+            <div class="col-lg-5 col-md-6 social-links">
+              <div class="social">
+                <a href="https://www.twitter.com/kitssingapur" class="twitter"
+                  ><i class="bx bxl-twitter"></i
+                ></a>
+                <a href="https://www.facebook.com/kitssingapur" class="facebook"
+                  ><i class="bx bxl-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/kitssingapur"
+                  class="instagram"
+                  ><i class="bx bxl-instagram"></i
+                ></a>
+                <a
+                  href="https://www.youtube.com/kitssingapur1997"
+                  class="google-plus"
+                  ><i class="bx bxl-youtube"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/company/kitss"
+                  class="linkedin"
+                  ><i class="bx bxl-linkedin"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("login-form");
+        const emailInput = document.getElementById("your_email");
+        const passInput = document.getElementById("your_pass");
+        const rememberMeInput = document.getElementById("remember-me");
+
+        if (rememberMeInput.checked && localStorage.getItem("savedEmail")) {
+          emailInput.value = localStorage.getItem("savedEmail");
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          if (emailInput.value.trim() === "") {
+            alert("Please enter your email.");
+            return;
+          }
+
+          if (!isValidEmail(emailInput.value.trim())) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          if (passInput.value === "") {
+            alert("Please enter your password.");
+            return;
+          }
+
+          if (rememberMeInput.checked) {
+            localStorage.setItem("savedEmail", emailInput.value.trim());
+          } else {
+            localStorage.removeItem("savedEmail");
+          }
+
+          form.submit();
+        });
+
+        function isValidEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const pattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+          return pattern.test(email) && emailRegex.test(email);
+        }
+      });
+    </script>
+  </body>
+</html>

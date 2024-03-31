@@ -1,0 +1,298 @@
+{% load static %}  <!-- Load the static tag to handle static files like CSS and images -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kits Digital Library login</title>
+  
+  <!-- Add the static URL to your CSS and images -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/remixicon/remixicon.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'assets/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/loginstyle.css' %}">
+  <link href="{% static 'assets/css/books.css' %}" rel="stylesheet">
+  <style>
+    /* Custom style for the "Select User Role" label */
+    .custom-label {
+      font-weight: bold;
+      font-size: 12px;
+      color: #333;
+      /* Add any other custom label styles here */
+    }
+  </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container d-flex align-items-center justify-content-between">
+          <div class="logo1">
+            <a href="{% url 'adminindex' %}" class="logo2">
+              <img src="{% static 'assets/img/cc1.png' %}" alt="" class="img-fluid">
+              <h1>KITS(S) DIGITAL LIBRARY</h1>
+            </a>
+          </div>
+    
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'adminindex' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'adminindex' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'adminindex' %}#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'admin_profile' %}">Profile</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <div class="main">
+    <!-- Sign up form -->
+    <section id="#" class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <div class="signup-form">
+              <h2 class="form-title">Sign up</h2>
+              <form method="POST" class="register-form" id="register-form" action="{% url 'registerform' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label1 for="yearSelect" style="font-weight: bold; color: #333;">Select Batch Year:</label1>
+                  <select id="yearSelect" name="yearSelect" style="border: 1px solid #ccc; padding: 5px;" required>
+                    <option value="" disabled selected>Select Batch</option>
+                    <!-- Options will be populated dynamically using JavaScript -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label1 for="branchSelect" style="font-weight: bold; color: #333;">Select an engineering branch:</label1>
+                  <select class="form-control" id="branchSelect" name="branchSelect" required>
+                    <option value="" disabled selected>Select an engineering branch</option>
+                    <option value="-civil">Civil Engineering</option>
+                    <option value="-mechanic">Mechanical Engineering</option>
+                    <option value="-eee">Electrical Engineering</option>
+                    <option value="-computer">Computer Science Engineering</option>
+                    <option value="-aiml">Artificial &  Machine Learning</option>
+                    <option value="-ece">Electronics Engineering</option>
+                    <option value="-iot">Internet of Things</option>
+                    <!-- Add more engineering branches as needed -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                  <input type="text" name="rollno" id="rollno" placeholder="Your Roll Number" required />
+                  <p id="warning-message" style="color: red; display: none;">Roll number must be 10 digits long.</p>
+                </div>
+                <div class="form-group">
+                  <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                  <input type="text" name="name" id="name" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email"><i class="zmdi zmdi-email"></i></label>
+                  <input type="email" name="email" id="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                  <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                  <input type="password" name="pass" id="pass" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                  <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                  <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required />
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                  <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+                </div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        {% if message.tags == 'form1' %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+              {% endif %}
+                <div class="form-group form-button">
+                  <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                </div>
+              </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="{% static 'assets/img/signup-image.jpg' %}" alt="sing up image"></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="main">
+      <!-- Sign up form -->
+      <section id="#" class="signup">
+          <div class="container">
+            <div class="signup-content">
+              <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                <form method="post" action="{% url 'registrationfile' %}" class="register-form" id="register-form" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label1 for="branchSelect" style="font-weight: bold; color: #333;">Upload the File:</label1>
+                    <input type="file" name="file" id="file" class="form-control-file" accept=".csv, .xlsx" required>
+                  </div>
+                  {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                          {% if message.tags == 'form2' %}
+                              <li class="{{ message.tags }}">{{ message }}</li>
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              {% endif %}
+                  <div class="form-group form-button">
+                    <input type="submit" name="signup" id="signup" class="form-submit" value="Upload" />
+                  </div>
+                </form>
+              </div>
+              <div class="signup-image">
+                  <figure><img src="{% static 'assets/img/signup-image.jpg' %}" alt="sing up image"></figure>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+  
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>KITS LIBRARY</h3>
+              <p>
+                Kamala Institute of Technology & Science
+                Singapur, Huzurabad
+                Karimnagar, Telanagana
+                India - 505468</p>
+              <strong>Phone:</strong>tel:+91 9177670003<br>
+              <strong>Email:</strong>kitssingapuram@yahoo.co.in<br>
+              </p>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Join Our College</h4>
+              <a href="https://www.kitssingapuram.ac.in/new/index.php">@kitssingapuram</a>
+            </div>
+            <div class="copyright">
+              &copy; Copyright <strong><span>KITS</span></strong>. All Rights Reserved
+              <div class="social">
+                <a href="https://www.twitter.com/kitssingapur" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/kitssingapur" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/kitssingapur" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://www.youtube.com/kitssingapur1997" class="google-plus"><i class="bx bxl-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/kitss" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer><!-- End Footer -->
+  
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Include JavaScript files at the bottom of your HTML body -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/script.js' %}"></script>
+  <!-- Your custom JavaScript -->
+  <!-- JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script>
+    const yearSelect = document.getElementById('yearSelect');
+    const rollno = document.getElementById('rollno');
+    const currentYear = new Date().getFullYear();
+
+    // Populate the year dropdown with the last five years
+    for (let year = currentYear; year >= currentYear - 4; year--) {
+      const option = document.createElement('option');
+      option.text = year;
+      option.value = year;
+      yearSelect.appendChild(option);
+    }
+
+    // Event listener to update the roll number when the year is selected
+    yearSelect.addEventListener('change', () => {
+      const selectedYear = yearSelect.value;
+
+      // Take the last two digits of the selected year and set them as the default value for the roll number
+      const lastTwoDigits = selectedYear.substring(2);
+
+      // Create the roll number format with the first two digits as the last two digits of the selected year, followed by "28"
+      const rollNumberFormat = lastTwoDigits + "28";
+
+      // Set the roll number format as the default value for the roll number input field
+      rollno.value = rollNumberFormat;
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("register-form");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const passInput = document.getElementById("pass");
+      const rePassInput = document.getElementById("re_pass");
+      const agreeTermInput = document.getElementById("agree-term");
+
+      form.addEventListener("submit", function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        const password = passInput.value;
+        const rePassword = rePassInput.value;
+
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long.");
+          return;
+        }
+
+        if (!isValidEmail(emailInput.value.trim())) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        if (!/\d/.test(password) || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[!@#$%^&*()_+{}\[\]:;<>,.?~\-]/.test(password)) {
+          alert("Password must contain at least one digit, one lowercase letter, one uppercase letter, and one special symbol (!@#$%^&*()_+{}[]:;<>,.?~-).");
+          return;
+        }
+
+        if (password !== rePassword) {
+          alert("Passwords do not match.");
+          return;
+        }
+
+        if (!agreeTermInput.checked) {
+          alert("Please agree to the terms of service.");
+          return;
+        }
+
+        // If all validations pass, submit the form
+        form.submit();
+      });
+      // Function to validate email address format
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Define the regex pattern to match Gmail addresses
+        const pattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        // Check if the email matches the pattern
+        return pattern.test(email);
+        return emailRegex.test(email);
+      }
+    });
+  </script>
+</body>
+</html>
