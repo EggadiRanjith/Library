@@ -44,7 +44,7 @@ To set up SMTP and Amazon S3, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/EggadiRanjith/library.git
    ```
 
 2. Set up Django backend:
