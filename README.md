@@ -57,7 +57,7 @@ To set up SMTP and Amazon S3, follow these steps:
 
 ## Contributing
 
-Contributions are welcome! If you find any bugs or have suggestions for improvements, please submit a pull request or open an issue.
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please submit a pull request or open an issue..
 
 ## Support
 
